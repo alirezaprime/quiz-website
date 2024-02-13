@@ -172,8 +172,8 @@ body {
 }
 .quiz-section {
   position: relative;
-  /* left: -50%; */
-  left: 0;
+  left: -50%;
+  /* left: 0; */
   width: 100%;
   background: #09001d;
   display: flex;
@@ -195,6 +195,16 @@ body {
   display: flex;
   flex-direction: column;
   padding: 20px 30px;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.9);
+}
+.quiz-section .quiz-box.active{
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+  transition: 1s ease;
+  transition-delay: 1s;
 }
 .quiz-box h1 {
   font-size: 32px;
@@ -261,7 +271,7 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: 0.5s;
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 .quiz-footer .next-btn:hover {
   background: #165379;
