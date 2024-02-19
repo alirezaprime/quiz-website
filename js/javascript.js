@@ -21,10 +21,10 @@ continueBtn.onclick = () => {
   quizBox.classList.add("active");
 
   showQuestions(0);
-  // questionCounter(1);
+  questionCounter(1);
 };
 let questionCount = 0;
-// let questionNum = 1;
+let questionNumb = 1;
 
 const nextBtn = document.querySelector(".next-btn");
 
@@ -32,6 +32,9 @@ nextBtn.onclick = () => {
   if (questionCount < questions.length - 1) {
     questionCount++;
     showQuestions(questionCount);
+
+    questionNumb++;
+    questionCounter(questionNumb);
   } else {
     console.log("question completed");
   }
@@ -55,8 +58,24 @@ function showQuestions(index) {
   //   <div class="option"><span>${questions[index].options[3]}</span></div>`;
 
   optionList.innerHTML = optionTag;
+
+  const option = document.querySelectorAll(".option");
+  for (let i = 0; i < option.length; i++) {
+    option[i].setAttribute("onclick", "optionSelected(this)");
+  }
 }
-// function questionCounter(index) {
-//   const questionTotal = document.querySelector(".question-total");
-//   questionTotal.textContent = `${index} of ${questions.length} questions`
-// }
+function optionSelected(answer) {
+  let userAnswer = answer.textContent;
+  let correctAnswer = questions[questionCount].answer;
+
+  if (userAnswer == correctAnswer) {
+    console.log('answer is correct');
+    answer.classList.add('correct');
+  }else{
+    answer.classList.add('incorrect');
+  }
+}
+function questionCounter(index) {
+  const questionTotal = document.querySelector(".question-total");
+  questionTotal.textContent = `${index} of ${questions.length} questions`;
+}
