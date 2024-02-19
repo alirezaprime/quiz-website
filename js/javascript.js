@@ -38,6 +38,8 @@ nextBtn.onclick = () => {
 
     questionNumb++;
     questionCounter(questionNumb);
+    
+    nextBtn.classList.remove("active");
   } else {
     console.log("question completed");
   }
@@ -87,6 +89,7 @@ function optionSelected(answer) {
   for (let i = 0; i < allOption; i++) {
     optionList.children[i].classList.add("disabled");
   }
+  nextBtn.classList.add("active");
 }
 function questionCounter(index) {
   const questionTotal = document.querySelector(".question-total");
