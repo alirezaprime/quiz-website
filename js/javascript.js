@@ -21,22 +21,19 @@ continueBtn.onclick = () => {
   quizBox.classList.add("active");
 
   showQuestions(0);
-  questionCounter(1);
+  // questionCounter(1);
 };
 let questionCount = 0;
-let questionNum = 1;
+// let questionNum = 1;
 
 const nextBtn = document.querySelector(".next-btn");
 
 nextBtn.onclick = () => {
-  if (questionCount < question.lenght - 1) {
+  if (questionCount < questions.length - 1) {
     questionCount++;
     showQuestions(questionCount);
-
-    questionNum++;
-    questionCounter(questionNum);
   } else {
-    console.log("question complete");
+    console.log("question completed");
   }
 };
 
@@ -46,16 +43,20 @@ const optionList = document.querySelector(".option-list");
 
 function showQuestions(index) {
   const questionText = document.querySelector(".question-text");
-  questionText.textContent = `${questions[index].num} ${questions[index].question}`;
+  questionText.textContent = `${questions[index].num}. ${questions[index].question}`;
 
   let optionTag = `<div class="option"><span>${questions[index].options[0]}</span></div>
   <div class="option"><span>${questions[index].options[1]}</span></div>
   <div class="option"><span>${questions[index].options[2]}</span></div>
   <div class="option"><span>${questions[index].options[3]}</span></div>`;
+  //   let optionTag = `<div class="option"><span>${questions[index].options[0]}</span></div>
+  //   <div class="option"><span>${questions[index].options[1]}</span></div>
+  //   <div class="option"><span>${questions[index].options[2]}</span></div>
+  //   <div class="option"><span>${questions[index].options[3]}</span></div>`;
 
   optionList.innerHTML = optionTag;
 }
-function questionCounter(index) {
-  const questionTotal = document.querySelector(".question-total");
-  questionTotal.textContent = `${index} of ${questions.length} questions`
-}
+// function questionCounter(index) {
+//   const questionTotal = document.querySelector(".question-total");
+//   questionTotal.textContent = `${index} of ${questions.length} questions`
+// }
